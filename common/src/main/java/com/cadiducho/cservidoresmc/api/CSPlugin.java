@@ -2,8 +2,7 @@ package com.cadiducho.cservidoresmc.api;
 
 import com.cadiducho.cservidoresmc.ApiClient;
 import com.cadiducho.cservidoresmc.Updater;
-
-import java.util.logging.Level;
+import com.vexsoftware.votifier.model.Vote;
 
 public interface CSPlugin {
 
@@ -62,4 +61,10 @@ public interface CSPlugin {
      * @param message el mensaje
      */
     void broadcastMessage(String message);
+
+    /**
+     * Lanzar el evento de Votifier
+     * @param vote el voto
+     */
+    void callVotifierEvent(Vote vote);
 }

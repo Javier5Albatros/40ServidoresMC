@@ -12,5 +12,10 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+
+    dependencies {
+        compileOnly 'com.github.NuVotifier:NuVotifier:2.7.2'
     }
 }

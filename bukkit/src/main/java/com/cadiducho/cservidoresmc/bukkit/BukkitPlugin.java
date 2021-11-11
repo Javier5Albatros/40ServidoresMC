@@ -8,8 +8,11 @@ import com.cadiducho.cservidoresmc.api.CSConsoleSender;
 import com.cadiducho.cservidoresmc.api.CSPlugin;
 import com.cadiducho.cservidoresmc.cmd.CSCommandManager;
 import com.google.gson.Gson;
+import com.vexsoftware.votifier.model.Vote;
+import com.vexsoftware.votifier.model.VotifierEvent;
 import lombok.Getter;
 import org.bstats.bukkit.Metrics;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -130,6 +133,11 @@ public class BukkitPlugin extends JavaPlugin implements CSPlugin {
         getServer().getScheduler().runTask(instance, () -> {
             getServer().getOnlinePlayers().forEach(p -> p.sendMessage(ChatColor.translateAlternateColorCodes('&', message)));
         });
+    }
+
+    @Override
+    public void callVotifierEvent(Vote vote) {
+        Bukkit.getPluginManager().callEvent(new VotifierEvent(vote));
     }
 
 }

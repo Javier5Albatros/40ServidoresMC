@@ -6,6 +6,8 @@ import com.cadiducho.cservidoresmc.api.CSPlugin;
 import com.cadiducho.cservidoresmc.cmd.CSCommandManager;
 import com.google.gson.Gson;
 import com.google.inject.Inject;
+import com.vexsoftware.votifier.model.Vote;
+import com.vexsoftware.votifier.sponge.event.VotifierEvent;
 import org.bstats.sponge.Metrics;
 import org.slf4j.Logger;
 import org.spongepowered.api.Game;
@@ -88,5 +90,10 @@ public class SpongePlugin implements CSPlugin {
     @Override
     public void broadcastMessage(String message) {
         Sponge.getServer().getBroadcastChannel().send(Text.of(message));
+    }
+
+    @Override
+    public void callVotifierEvent(Vote vote) {
+        Sponge.getEventManager().post(new VotifierEvent(vote, Sponge.getCauseStackManager().getCurrentCause()));
     }
 }

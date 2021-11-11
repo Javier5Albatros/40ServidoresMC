@@ -4,7 +4,7 @@ version: 3.0
 author: Cadiducho
 api-version: 1.13
 description: Enlace para servidores de la web 40ServidoresMC!
-softdepend: [PlaceholderAPI]
+softdepend: [PlaceholderAPI, Votifier]
 commands:
     vote40:
         description: Comando principal de 40ServidoresMC

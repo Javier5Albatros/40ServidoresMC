@@ -5,10 +5,10 @@ import com.cadiducho.cservidoresmc.api.CSCommandSender;
 import com.cadiducho.cservidoresmc.api.CSPlugin;
 import com.cadiducho.cservidoresmc.model.VoteResponse;
 import com.cadiducho.cservidoresmc.model.VoteStatus;
+import com.vexsoftware.votifier.model.Vote;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Level;
 
 /**
  * Comando para validar el voto en 40ServidoresMC
@@ -52,6 +52,9 @@ public class VoteCMD extends CSCommand {
                     if (plugin.getCSConfiguration().getBoolean("broadcast.activado")) {
                         plugin.broadcastMessage(plugin.getCSConfiguration().getString("broadcast.mensajeBroadcast").replace("{0}", sender.getName()));
                     }
+
+                    Vote vote = new Vote("40servidoresmc", sender.getName(), "https://www.40servidoresmc.es/", String.valueOf(System.currentTimeMillis()));
+                    plugin.callVotifierEvent(vote);
                     break;
                 case ALREADY_VOTED:
                     sender.sendMessageWithTag("&aGracias por votar, pero ya has obtenido tu premio!");
